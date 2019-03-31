@@ -107,3 +107,5 @@ env/
 *.xml
 __pycache__/
 config.py
+.env
+*.csv
