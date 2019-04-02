@@ -3,7 +3,7 @@ from requests import exceptions
 import dropbox
 from lxml import etree
 
-import config
+from sw_app import config
 
 
 def main():
