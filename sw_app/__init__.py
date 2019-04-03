@@ -13,7 +13,7 @@ def create_app():
 
     @app.route('/goods')
     def goods():
-        catal = Goods.query.all()
+        catal = Goods.query.order_by(Goods.title).all()
         return render_template('goods.html', catal=catal)
 
     @app.route('/contacts')
