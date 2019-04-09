@@ -4,25 +4,26 @@ import os
 from dotenv import load_dotenv
 import dropbox
 from lxml import etree
-<<<<<<< HEAD
-
-from sw_app import config
-=======
-from requests import exceptions
->>>>>>> bd5b5ac9d89c5cda6650c73451c185a739ad9917
+from typing import Union, List, Any
+import requests
 
 
 def main():
     load_dotenv()
     dbx = dropbox.Dropbox(os.getenv('DROPBOX_KEY'))
-    xml_files_list = get_xml_files_list(dbx, os.getenv('FILEPATH'))
+    try:
+        xml_files_list = get_xml_files_list(dbx, os.getenv('FILEPATH'))
+    except (requests.exceptions.ConnectionError):
+        print('Connection problem')
+        return False
     if xml_files_list:
         for xml_file in xml_files_list:
-            metadata, file_content = dbx.files_download(f'/{os.getenv("FILEPATH")}/{xml_file}')
+            xml_tree_template = f'/{os.getenv("FILEPATH")}/{xml_file}'
+            metadata, file_content = dbx.files_download(xml_tree_template)
             xml_to_csv_parser(xml_file, file_content.content)
-    
 
-def get_xml_files_list(dbx, foldername):
+
+def get_xml_files_list(dbx, foldername: str) -> Union[bool, List[str]]:
     try:
         xml_folder = dbx.files_list_folder(f'/{foldername}').entries
         xml_files_list = [xml_file.name for xml_file in xml_folder]
@@ -31,9 +32,6 @@ def get_xml_files_list(dbx, foldername):
         return False
     except (dropbox.exceptions.ApiError):
         print('Foldername is incorrect')
-        return False
-    except (exceptions.ConnectionError):
-        print('Connection Error')
         return False
     except (dropbox.exceptions.AuthError):
         print('Failed authorization. Check token')
@@ -50,16 +48,16 @@ def get_xml_files_list(dbx, foldername):
     return xml_files_list
 
 
-def xml_to_csv_parser(xml_file_name, xml_file_content):
+def xml_to_csv_parser(xml_file_name: str, xml_file_content: bytes) -> Any:
     try:
         root = etree.fromstring(xml_file_content)
         filename, file_extension = os.path.splitext(xml_file_name)
+        fields = ['title', 'artist', 'country', 'company', 'price', 'year', ]
         if file_extension == '.xml':
             with open(f'{filename}.csv', 'w', encoding='utf-8') as f:
-                fields = ['title', 'artist', 'country', 'company', 'price', 'year', ]
                 writer = csv.DictWriter(f, fields, delimiter=';')
                 writer.writeheader()
-                
+
                 cd_data = []
                 for element in root.getchildren():
                     cd_data.append({
@@ -78,7 +76,7 @@ def xml_to_csv_parser(xml_file_name, xml_file_content):
     except (etree.XMLSyntaxError):
         print('Bad XML syntax')
         return False
-        
+
 
 if __name__ == '__main__':
     main()

@@ -110,3 +110,4 @@ __pycache__/
 config.py
 .env
 *.csv
+*.db
