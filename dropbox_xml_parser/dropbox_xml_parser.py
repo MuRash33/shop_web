@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 import dropbox
 from lxml import etree
-from typing import Union, List, Any
+from typing import Optional, List
 import requests
 
 
@@ -17,13 +17,13 @@ def main():
         print('Connection problem')
         return False
     if xml_files_list:
+        parsed_xml_data = parse_xml_files(dbx, xml_files_list)
+        prepared_data = prepare_xml_data_to_save(parsed_xml_data)
         for xml_file in xml_files_list:
-            xml_tree_template = f'/{os.getenv("FILEPATH")}/{xml_file}'
-            metadata, file_content = dbx.files_download(xml_tree_template)
-            xml_to_csv_parser(xml_file, file_content.content)
+            save_data_as_csv(xml_file, prepared_data)
 
 
-def get_xml_files_list(dbx, foldername: str) -> Union[bool, List[str]]:
+def get_xml_files_list(dbx, foldername: str) -> Optional[List[str]]:
     try:
         xml_folder = dbx.files_list_folder(f'/{foldername}').entries
         xml_files_list = [xml_file.name for xml_file in xml_folder]
@@ -48,17 +48,25 @@ def get_xml_files_list(dbx, foldername: str) -> Union[bool, List[str]]:
     return xml_files_list
 
 
-def xml_to_csv_parser(xml_file_name: str, xml_file_content: bytes) -> Any:
-    try:
-        root = etree.fromstring(xml_file_content)
-        filename, file_extension = os.path.splitext(xml_file_name)
-        fields = ['title', 'artist', 'country', 'company', 'price', 'year', ]
-        if file_extension == '.xml':
-            with open(f'{filename}.csv', 'w', encoding='utf-8') as f:
-                writer = csv.DictWriter(f, fields, delimiter=';')
-                writer.writeheader()
+def parse_xml_files(dbx, xml_files_list: List[str]) -> Optional[List]:
+    if xml_files_list:
+        parsed_files_data_list = []
+        for xml_file in xml_files_list:
+            file_path_template = f'/{os.getenv("FILEPATH")}/{xml_file}'
+            metadata, file_content = dbx.files_download(file_path_template)
+            parsed_files_elements = (metadata, file_content)
+            parsed_files_data_list.append(parsed_files_elements)
+        return parsed_files_data_list
 
-                cd_data = []
+
+def prepare_xml_data_to_save(parsed_files_data_list: List) -> Optional[List]:
+    if parsed_files_data_list:
+        cd_data = []
+        for file_data in parsed_files_data_list:
+            metadata, file_content = file_data
+            try:
+                root = etree.fromstring(file_content.content)
+                
                 for element in root.getchildren():
                     cd_data.append({
                         'title': element.find('TITLE').text,
@@ -68,14 +76,21 @@ def xml_to_csv_parser(xml_file_name: str, xml_file_content: bytes) -> Any:
                         'price': element.find('PRICE').text,
                         'year': element.find('YEAR').text,
                         })
-                for cd in cd_data:
-                    writer.writerow(cd)
-            print('File parsed')
-        else:
-            print('This file isn\'t XML')
-    except (etree.XMLSyntaxError):
-        print('Bad XML syntax')
-        return False
+            except (etree.XMLSyntaxError):
+                print('Bad XML syntax')
+                return False
+        return cd_data
+
+
+def save_data_as_csv(xml_file_name: str, prepared_data: List) -> None:
+    if prepared_data:
+        fields = ['title', 'artist', 'country', 'company', 'price', 'year', ]
+        filename, file_extension = os.path.splitext(xml_file_name)
+        with open(f'{filename}.csv', 'w', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fields, delimiter=';')
+            writer.writeheader()
+            for cd in prepared_data:
+                writer.writerow(cd)
 
 
 if __name__ == '__main__':
