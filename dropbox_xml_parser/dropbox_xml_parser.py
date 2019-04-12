@@ -12,8 +12,8 @@ def main():
     load_dotenv()
     dbx = dropbox.Dropbox(os.getenv('DROPBOX_KEY'))
     try:
-        xml_files_list = get_xml_files_list(dbx, os.getenv('FILEPATH'))
-    except (requests.exceptions.ConnectionError):
+        xml_files_list = get_xml_files_list(dbx, os.getenv('FOLDERNAME'))
+    except requests.exceptions.ConnectionError:
         print('Connection problem')
         return False
     if xml_files_list:
@@ -29,22 +29,22 @@ def get_xml_files_list(dbx, foldername: str) -> Optional[List[str]]:
         xml_files_list = [xml_file.name for xml_file in xml_folder]
     except (dropbox.stone_validators.ValidationError):
         print(f'Foldername did not match pattern')
-        return False
+        return None
     except (dropbox.exceptions.ApiError):
         print('Foldername is incorrect')
-        return False
+        return None
     except (dropbox.exceptions.AuthError):
         print('Failed authorization. Check token')
-        return False
+        return None
     except (dropbox.exceptions.BadInputError):
         print('Bad access token')
-        return False
+        return None
     except FileNotFoundError:
         print('Folder is empty')
-        return False
+        return None
     if not xml_files_list:
         print('Folder is empty')
-        return False
+        return None
     return xml_files_list
 
 
@@ -52,8 +52,10 @@ def parse_xml_files(dbx, xml_files_list: List[str]) -> Optional[List]:
     if xml_files_list:
         parsed_files_data_list = []
         for xml_file in xml_files_list:
-            file_path_template = f'/{os.getenv("FILEPATH")}/{xml_file}'
-            metadata, file_content = dbx.files_download(file_path_template)
+            basedir = os.path.join(os.altsep, f'{os.getenv("FOLDERNAME")}')
+            filepath_template = os.path.join(basedir, f'{xml_file}')
+            filepath_template = filepath_template.replace(os.sep, os.altsep)
+            metadata, file_content = dbx.files_download(filepath_template)
             parsed_files_elements = (metadata, file_content)
             parsed_files_data_list.append(parsed_files_elements)
         return parsed_files_data_list
@@ -78,7 +80,7 @@ def prepare_xml_data_to_save(parsed_files_data_list: List) -> Optional[List]:
                         })
             except (etree.XMLSyntaxError):
                 print('Bad XML syntax')
-                return False
+                return None
         return cd_data
 
 
