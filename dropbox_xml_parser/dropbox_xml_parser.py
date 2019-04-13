@@ -71,12 +71,11 @@ def prepare_xml_data_to_save(parsed_files_data_list: List) -> Optional[List]:
                 
                 for element in root.getchildren():
                     cd_data.append({
-                        'title': element.find('TITLE').text,
-                        'artist': element.find('ARTIST').text,
-                        'country': element.find('COUNTRY').text,
-                        'company': element.find('COMPANY').text,
-                        'price': element.find('PRICE').text,
-                        'year': element.find('YEAR').text,
+                        'name': element.find('name').text,
+                        'price': element.find('price').text,
+                        'description': element.find('description').text,
+                        'calories': element.find('calories').text,
+                        'picture': element.find('picture').text,
                         })
             except (etree.XMLSyntaxError):
                 print('Bad XML syntax')
@@ -86,7 +85,7 @@ def prepare_xml_data_to_save(parsed_files_data_list: List) -> Optional[List]:
 
 def save_data_as_csv(xml_file_name: str, prepared_data: List) -> None:
     if prepared_data:
-        fields = ['title', 'artist', 'country', 'company', 'price', 'year', ]
+        fields = ['name', 'price', 'description', 'calories', 'picture', ]
         filename, file_extension = os.path.splitext(xml_file_name)
         with open(f'{filename}.csv', 'w', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fields, delimiter=';')

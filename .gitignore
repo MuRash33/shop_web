@@ -111,3 +111,4 @@ config.py
 .env
 *.csv
 *.db
+data/
