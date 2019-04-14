@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+ <item><id1c>000000863</id1c><name><![CDATA[Металлолом]]></name><title></title><oe>000000863</oe>
+ <analog>000000863</analog><brend>Scania</brend><price>100</price>
+ <warehouse>1 палет</warehouse><proizv>Neizvesten</proizv><sost>Б\У</sost><kolvo></kolvo><kompl>/</kompl><kompl2></kompl2>
+ <cat2>000000332</cat2><sitecat>Neizvesten</sitecat><bigagg>0</bigagg><vidlink></vidlink>
+ <pr_exp>100</pr_exp><nzn></nzn>
+ <weigth>0</weigth><volume>0</volume><cp>1</cp>
+ <ontd>0</ontd><partdescr><![CDATA[]]></partdescr><direct><ok>1</ok><name><![CDATA[Металлолом]]></name><text><![CDATA[]]></text><slova></slova></direct>
+ <dlin>0</dlin><shir>0</shir><isnew>0</isnew><vis>0</vis>
+ <zapros></zapros><hastags>0</hastags><krep_info></krep_info><predlozenia></predlozenia><dopkats></dopkats></item>
+<item><id1c>000000436</id1c><name><![CDATA[Болт с шестигранной головкой M8*12 и резьбой по всей длине]]></name><title></title><oe>000000436</oe>
+ <analog>M8*12</analog><brend>Scania</brend><price>10</price>
+ <warehouse>K-18</warehouse><proizv>Scania</proizv><sost>Б\У</sost><kolvo>4</kolvo><kompl>/1306573/</kompl><kompl2></kompl2>
+ <cat2>000000363</cat2><sitecat>Scania</sitecat><bigagg>0</bigagg><vidlink></vidlink>
+ <pr_exp>10</pr_exp><nzn><n><![CDATA[1306573]]></n><b><![CDATA[Scania]]></b></nzn>
+ <weigth>0</weigth><volume>0</volume><cp>1</cp>
+ <ontd>0</ontd><partdescr><![CDATA[крепление замка крыла]]></partdescr><direct><ok>1</ok><name><![CDATA[M8*12 болт ]]></name><text><![CDATA[]]></text><slova></slova></direct>
+ <dlin>0</dlin><shir>0</shir><isnew>0</isnew><vis>0</vis>
+ <zapros></zapros><hastags>0</hastags><krep_info></krep_info><predlozenia></predlozenia><dopkats></dopkats></item>
+<item><id1c>000000437</id1c><name><![CDATA[Корпус фары левый]]></name><title></title><oe>1936674</oe>
+ <analog>1936674</analog><brend>Scania</brend><price>2 500</price>
+ <warehouse>F-05</warehouse><proizv>Scania</proizv><sost>Б\У</sost><kolvo>23</kolvo><kompl>/1936674/S80.8081/SCR/155/S80.8081/TD08-52-024L/AC1431920/TD08-52-024L/ZX12.1569/TD08-52-024L/67253/M3131144/1.22592/M3131144/1.22592/M3131144/SCR/155/1.22592/SCR/155/1.22592/SCR/155/M3131144/1431920/1790006/</kompl><kompl2></kompl2>
+ <cat2>000000112</cat2><sitecat>Scania</sitecat><bigagg>0</bigagg><vidlink></vidlink>
+ <pr_exp>2 500</pr_exp><nzn><n><![CDATA[1936674]]></n><b><![CDATA[Scania]]></b><n><![CDATA[S80.8081]]></n><b><![CDATA[KAHVECI OTOMOTIV]]></b><n><![CDATA[SCR/155]]></n><b><![CDATA[COVIND]]></b><n><![CDATA[S80.8081]]></n><b><![CDATA[KAHVECI OTOMOTIV]]></b><n><![CDATA[TD08-52-024L]]></n><b><![CDATA[TANGDE]]></b><n><![CDATA[AC1431920]]></n><b><![CDATA[ALFACAR]]></b><n><![CDATA[TD08-52-024L]]></n><b><![CDATA[TANGDE]]></b><n><![CDATA[ZX12.1569]]></n><b><![CDATA[ZETEX]]></b><n><![CDATA[TD08-52-024L]]></n><b><![CDATA[TANGDE]]></b><n><![CDATA[67253]]></n><b><![CDATA[AUGER]]></b><n><![CDATA[M3131144]]></n><b><![CDATA[MARSHALL]]></b><n><![CDATA[1.22592]]></n><b><![CDATA[DT Рекомендуем]]></b><n><![CDATA[M3131144]]></n><b><![CDATA[MARSHALL]]></b><n><![CDATA[1.22592]]></n><b><![CDATA[DT Рекомендуем]]></b><n><![CDATA[M3131144]]></n><b><![CDATA[MARSHALL]]></b><n><![CDATA[SCR/155]]></n><b><![CDATA[COVIND]]></b><n><![CDATA[1.22592]]></n><b><![CDATA[DT Рекомендуем]]></b><n><![CDATA[SCR/155]]></n><b><![CDATA[COVIND]]></b><n><![CDATA[1.22592]]></n><b><![CDATA[DT Рекомендуем]]></b><n><![CDATA[SCR/155]]></n><b><![CDATA[COVIND]]></b><n><![CDATA[M3131144]]></n><b><![CDATA[MARSHALL]]></b><n><![CDATA[1431920]]></n><b><![CDATA[Scania]]></b><n><![CDATA[1790006]]></n><b><![CDATA[Scania]]></b></nzn>
+ <weigth>0</weigth><volume>0</volume><cp>1</cp>
+ <ontd>0</ontd><partdescr><![CDATA[]]></partdescr><direct><ok>1</ok><name><![CDATA[Корпус фары левый]]></name><text><![CDATA[]]></text><slova></slova></direct>
+ <dlin>0</dlin><shir>0</shir><isnew>0</isnew><vis>0</vis>
+ <zapros></zapros><hastags>0</hastags><krep_info></krep_info><predlozenia></predlozenia><dopkats></dopkats></item>
+<item><id1c>000000438</id1c><name><![CDATA[Омыватель фар LH]]></name><title></title><oe>1883637</oe>
+ <analog>1883637</analog><brend>Scania</brend><price>5 000</price>
+ <warehouse>B-52</warehouse><proizv>Scania</proizv><sost>Б\У</sost><kolvo></kolvo><kompl>/1883637/</kompl><kompl2></kompl2>
+ <cat2>000000065</cat2><sitecat>Scania</sitecat><bigagg>0</bigagg><vidlink></vidlink>
+ <pr_exp>5 000</pr_exp><nzn><n><![CDATA[1883637]]></n><b><![CDATA[Scania]]></b></nzn>
+ <weigth>0</weigth><volume>0</volume><cp>1</cp>
+ <ontd>0</ontd><partdescr><![CDATA[]]></partdescr><direct><ok>1</ok><name><![CDATA[Омыватель фар LH]]></name><text><![CDATA[]]></text><slova></slova></direct>
+ <dlin>0</dlin><shir>0</shir><isnew>0</isnew><vis>0</vis>
+ <zapros></zapros><hastags>0</hastags><krep_info></krep_info><predlozenia></predlozenia><dopkats></dopkats></item>
+<item><id1c>000000446</id1c><name><![CDATA[Панель пола (нижнее спальное место)]]></name><title></title><oe>1483053</oe>
+ <analog>1483053</analog><brend>Scania</brend><price>1 500</price>
+ <warehouse>D-73</warehouse><proizv>Scania</proizv><sost>Б\У</sost><kolvo>8</kolvo><kompl>/1483053/</kompl><kompl2></kompl2>
+ <cat2>000000056</cat2><sitecat>Scania</sitecat><bigagg>0</bigagg><vidlink></vidlink>
+ <pr_exp>1 500</pr_exp><nzn><n><![CDATA[1483053]]></n><b><![CDATA[Scania]]></b></nzn>
+ <weigth>0</weigth><volume>0</volume><cp>1</cp>
+ <ontd>0</ontd><partdescr><![CDATA[]]></partdescr><direct><ok>1</ok><name><![CDATA[Панель пола]]></name><text><![CDATA[]]></text><slova></slova></direct>
+ <dlin>0</dlin><shir>0</shir><isnew>0</isnew><vis>0</vis>
+ <zapros></zapros><hastags>0</hastags><krep_info></krep_info><predlozenia></predlozenia><dopkats></dopkats></item>
+<item><id1c>000000449</id1c><name><![CDATA[Кронштейн крепления контрольного щупа]]></name><title></title><oe>2030318</oe>
+ <analog>2030318</analog><brend>Scania</brend><price>250</price>
+ <warehouse>A-18</warehouse><proizv>Scania</proizv><sost>Б\У</sost><kolvo>25</kolvo><kompl>/1892655/2030318/1363112/</kompl><kompl2></kompl2>
+ <cat2>000000158</cat2><sitecat>Scania</sitecat><bigagg>0</bigagg><vidlink></vidlink>
+ <pr_exp>250</pr_exp><nzn><n><![CDATA[1892655]]></n><b><![CDATA[Scania]]></b><n><![CDATA[2030318]]></n><b><![CDATA[Scania]]></b><n><![CDATA[1363112]]></n><b><![CDATA[Scania]]></b></nzn>
+ <weigth>0</weigth><volume>0</volume><cp>1</cp>
+ <ontd>0</ontd><partdescr><![CDATA[]]></partdescr><direct><ok>1</ok><name><![CDATA[Кронштейн крепления ]]></name><text><![CDATA[]]></text><slova></slova></direct>
+ <dlin>0</dlin><shir>0</shir><isnew>0</isnew><vis>0</vis>
+ <zapros></zapros><hastags>0</hastags><krep_info></krep_info><predlozenia></predlozenia><dopkats></dopkats></item>
+ </root>
