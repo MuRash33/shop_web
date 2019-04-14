@@ -1,5 +1,9 @@
-from flask import Flask, render_template
-from sw_app.models import db, Goods
+from flask import Flask
+from sw_app.db import db
+from sw_app.catalog.views import blueprint as catalog_blueprint
+from sw_app.contact.views import blueprint as contact_blueprint
+from sw_app.info.views import blueprint as info_blueprint
+from sw_app.index.views import blueprint as index_blueprint
 
 
 def create_app():
@@ -7,20 +11,9 @@ def create_app():
     app.config.from_pyfile('config.py')
     db.init_app(app)
 
-    @app.route('/')
-    def index():
-        return render_template('index.html')
+    app.register_blueprint(catalog_blueprint)
+    app.register_blueprint(contact_blueprint)
+    app.register_blueprint(info_blueprint)
+    app.register_blueprint(index_blueprint)
 
-    @app.route('/goods')
-    def goods():
-        catal = Goods.query.all()
-        return render_template('goods.html', catal=catal)
-
-    @app.route('/contacts')
-    def contacts():
-        return render_template('contacts.html')
-
-    @app.route('/info')
-    def info():
-        return render_template('info.html')
     return app

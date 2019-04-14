@@ -1,15 +1,17 @@
-from flask_sqlalchemy import SQLAlchemy
+from sw_app.db import db
+from flask import Blueprint
 
-db = SQLAlchemy()
+blueprint = Blueprint('catalog', __name__)
 
-class Goods(db.Model):
+class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    cat = db.Column(db.String, nullable=False)
+    cat = db.Column(db.String, nullable=True)
     title = db.Column(db.String, nullable=False)
     number = db.Column(db.Integer, nullable=False)
-    art = db.Column(db.Integer, nullable=False)
+    articul = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=True)
 
+
     def __repr__(self):
-        return '{} {}'.format(self.cat, self.title)
+        return '{}'.format(self.cat)
