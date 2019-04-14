@@ -16,4 +16,19 @@ def create_app():
     app.register_blueprint(info_blueprint)
     app.register_blueprint(index_blueprint)
 
+<<<<<<< HEAD
+=======
+    @app.route('/goods')
+    def goods():
+        catal = Goods.query.order_by(Goods.title).all()
+        return render_template('goods.html', catal=catal)
+
+    @app.route('/contacts')
+    def contacts():
+        return render_template('contacts.html')
+
+    @app.route('/info')
+    def info():
+        return render_template('info.html')
+>>>>>>> 680f9b6532aeb464fd20921cc2d90eacdba0d345
     return app

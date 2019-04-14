@@ -110,3 +110,5 @@ env/
 __pycache__/
 .env
 *.csv
+*.db
+data/
